@@ -18,3 +18,7 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 785517377502.dkr.ecr.us-east-2.amazonaws.com/catnip:latest
+  artifacts:
+    files:
+      - '**/*'
+      name: s3-to-s3-latest-build.zip
