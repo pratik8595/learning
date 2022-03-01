@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+      - REPOSITORY_URI=785517377502.dkr.ecr.us-east-2.amazonaws.com/staticsite
+      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
+  build:
+    commands:
+      - ls -lrt
+      - docker --version
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      - docker build -t staticsite:latest .
+      - docker tag staticsite:latest 785517377502.dkr.ecr.us-east-2.amazonaws.com/staticsite:latest    
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push 785517377502.dkr.ecr.us-east-2.amazonaws.com/staticsite:latest
+      - printf '[{"name":"","imageUri":"%s"}]' $REPOSITORY_URI:latest > imagedefinitions.json
+      - cat imagedefinitions.json
+artifacts:
+  files: imagedefinitions.json
