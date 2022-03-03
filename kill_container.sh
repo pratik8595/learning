@@ -2,4 +2,4 @@
 
 sudo su
 
-docker rm -f staticsite:latest || true
+docker rm -f staticsite || true
