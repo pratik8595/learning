@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /tmp
+hooks:
+  ApplicationStop:
+    - location: kill_container.sh
+      timeout: 20
+      runas: ubuntu
+  AfterInstall:
+    - location: load_image.sh
+      timeout: 10
+      runas: ubuntu
+  ApplicationStart:
+    - location: start_container.sh
+      timeout: 10
+      runas: ubuntu
