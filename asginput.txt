@@ -1,2 +1,2 @@
-existing_asg nodeasg
-replace_by testasg
+existing_asg testasg
+replace_by nodeasg
