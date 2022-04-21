@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>JavaScript - read JSON from URL</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    <div class="mypanel"></div>
+
+    <script>
+    $.getJSON('http://projectlb-1236536453.us-east-2.elb.amazonaws.com/fetch',
+     function(data) {
+
+        var text = `First_name: ${data.First_name}<br>
+                    date: ${data.date}<br>
+                    last_name: ${data.last_name}<br>
+                    id: ${data.id}`
+
+
+        $(".mypanel").html(text);
+    });
+    </script>
+
+</body>
+</html>
+
