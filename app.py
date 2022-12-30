@@ -6,10 +6,10 @@ import pymysql
 
 app = Flask(__name__)
 CORS(app)
-connection = pymysql.connect(host='database1.czy1sygl9ixu.ap-northeast-1.rds.amazonaws.com',
+connection = pymysql.connect(host='database2.czy1sygl9ixu.ap-northeast-1.rds.amazonaws.com',
                              user='admin',
                              password='admin123',
-                             db='database1',
+                             db='database2',
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
 
