@@ -5,7 +5,7 @@ import pymysql
 
 
 app = Flask(__name__)
-CORS(app)
+#CORS(app)
 connection = pymysql.connect(host='database2.czy1sygl9ixu.ap-northeast-1.rds.amazonaws.com',
                              user='admin',
                              password='admin123',
